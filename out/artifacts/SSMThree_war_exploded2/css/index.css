@@ -1,0 +1,28 @@
+.box{
+    width: 700px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 1px;
+}
+table{
+    width: 100%;
+}
+th,td{
+    width:100px;
+    text-align: center;
+}
+th{
+    height: 30px;
+    line-height: 30px;
+    background: #e0e5e5;
+}
+td{
+    height: 70px;
+    line-height: 70px;
+    background: #f3f5f5;
+}
+.show{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

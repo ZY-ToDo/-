@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="/js/jquery-1.8.3.js"></script>
+<script>
+    $(function () {
+        alert("调用");
+        $.ajax({
+           url:"http://localhost:8080/byJson.action",
+            dataType:"json",
+            type:"GET",
+            success:function (data) {
+                 currentPage = data.currentPage;
+                 pageSize = data.pageSize;
+                 count = data.count;
+                 totalPage = data.totalPage;
+                 $("#head").append("<p>当前第"+currentPage+"/"+totalPage+"页</p>"+"呵呵哒");
+                    $.each(data.userList,function (index, user) {
+                        var idd = user.id;
+                        var username = user.username;
+                        var age = user.age;
+                        $("#users").append("<tr><td>"+idd+"</td>"+"<td>"+username+"</td>"+"<td>"+age+"</td>" +
+                            "<td><form action='/delete.action?id="+idd+"' method='post'><input type='submit' value='删除'></form></td></tr>")
+                    });
+            }
+        });
+    });
+
+
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+</head>
+<body>
+
+
+        <div class="panel-heading text-center">
+            <h1 align="center">用户列表</h1>
+            <div id="head" align="center"></div>
+        </div>
+        <div>
+            <table border="1" align="center" width="500">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>用户名</th>
+                    <th>年龄</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="users">
+
+                </tbody>
+                <div>
+
+                </div>
+            </table>
+        </div>
+
+</body>
+</html>
